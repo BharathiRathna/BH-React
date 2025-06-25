@@ -27,8 +27,8 @@ const RecipeForm: React.FC = () => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
     };
-     //Initial check
-    handleResize(); 
+    //Initial check
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -46,7 +46,7 @@ const RecipeForm: React.FC = () => {
   useEffect(() => {
     fetch("http://localhost:1337/api/custom-boreshead-receipes?populate=*", {
       headers: {
-        Authorization: "Bearer YOUR_API_TOKEN_HERE",
+        Authorization: "API_TOKEN_HERE",
       },
     })
       .then((res) => res.json())
@@ -71,7 +71,7 @@ const RecipeForm: React.FC = () => {
           <span className="font-medium tracking-[0.188rem] pl-1">1905</span>
         </div>
 
-        <nav className="flex items-center justify-center flex-wrap gap-6 w-full text-[17px] font-semibold tracking-wider uppercase relative z-50">
+        <nav className="flex items-center justify-center flex-wrap gap-9 w-full text-[17px] font-semibold tracking-wider uppercase relative z-50">
           <button
             className="md:hidden block"
             aria-label="More Options"
@@ -110,21 +110,27 @@ const RecipeForm: React.FC = () => {
             <p className="font-montserrat">Careers</p>
           </a>
 
-          <button
-            onClick={() => setShowMap(true)}
-            aria-label="Find Locations"
-            className="text-[#bbae96]"
-          >
-            <i className="fas fa-map-marker-alt text-sm"></i>
-          </button>
+          <div className="flex items-center space-x-5">
+            <div>
+              <button
+                onClick={() => setShowMap(true)}
+                aria-label="Find Locations"
+                className="text-[#bbae96]"
+              >
+                <i className="fas fa-map-marker-alt text-lm mt-2"></i>
+              </button>
+            </div>
 
-          <button
-            onClick={() => setShowSearch(true)}
-            aria-label="Search"
-            className="text-[#bbae96]"
-          >
-            <i className="fas fa-search text-sm"></i>
-          </button>
+            <div>
+              <button
+                onClick={() => setShowSearch(true)}
+                aria-label="Search"
+                className="text-[#bbae96]"
+              >
+                <i className="fas fa-search text-lm mt-2"></i>
+              </button>
+            </div>
+          </div>
         </nav>
 
         {/* Conditional rendering of Search & Map */}
