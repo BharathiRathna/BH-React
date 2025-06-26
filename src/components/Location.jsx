@@ -1,5 +1,3 @@
-import BgBrickDesktop from '../assets/images/bg-brick-desktop.png';
-import BgBrickMobile from '../assets/images/bg-brick-mobile.png';
 import FiligreeDetails from '../assets/images/filigree-detail-2.png';
 import FrameBorder from '../assets/images/frame-border.png';
 import HeadingGoldTexture from '../assets/images/heading-gold-texture.png'
@@ -7,12 +5,7 @@ import HeadingGoldTexture from '../assets/images/heading-gold-texture.png'
 function Location() {
     return (
         <div
-            className="bg-cover bg-no-repeat h-[466.2px] w-full pt-14 pb-12 px-6 lg:pt-20 lg:pb-[93px] lg:px-20 " style={{
-                backgroundImage: `url(${BgBrickMobile})`,
-                '@media (min-width: 1024px)': {
-                    backgroundImage: `url(${BgBrickDesktop})`
-                }
-            }}>
+            className="bg-cover bg-no-repeat h-[466.2px] w-full pt-14 pb-12 px-6 lg:pt-20 lg:pb-[93px] lg:px-20 bg-[url('/images/bg-brick-mobile.png')] lg:bg-[url('/images/bg-brick-desktop.png')]">
             <div className="flex flex-col items-center justify-center">
                 <img src={FiligreeDetails} alt="" className='bg-contain w-7 bg-center inline-block align-sub max-w-full mb-5 lg:mb-6' />
                 <h2 className="lowercase font-variant-full inline-block text-lg lg:text-[22px] text-center mb-6 font-[minion-pro,'Times_New_Roman','Times','Georgia',serif] font-bold leading-[.81] tracking-[.08em]">

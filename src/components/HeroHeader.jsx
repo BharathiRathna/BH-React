@@ -10,7 +10,7 @@ function HeroHeader() {
                         loop
                         muted
                         playsInline
-                        className="object-cover col-start-1 col-end-auto row-start-1 row-end-auto w-full"
+                        className="object-cover col-start-1 col-end-auto row-start-1 row-end-auto w-full h-full lg:h-screen"
                     ></video>
                 </div>
                 <div className="flex items-center justify-center absolute inset-0 z-10 w-full h-full">

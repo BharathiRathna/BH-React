@@ -10,7 +10,10 @@ function AboutHome() {
                     <picture className="col-start-1 col-end-auto row-start-1 row-end-auto object-cover relative w-full h-full z-0">
                         <img src={OurStory} alt="" className='w-full h-full block object-cover opacity-70'/>
                     </picture>
-                    <video className='opacity-100 pointer-event-auto visible z-10 object-cover col-start-1 col-end-auto row-start-1 row-end-auto relative w-full h-full aspect-[1280/720] overflow-hidden grid-cols-1 grid-rows-1 transition-opacity transition-visibility duration-300 delay-0 ease ease-linear' preload="none" data-lazyload="https://player.vimeo.com/progressive_redirect/playback/256102133/rendition/720p/file.mp4?loc=external&amp;signature=0bb840ff3ae2acbf7b2ee32ed302caec40a16b41bf9ad26b4a3f33890828054a" playsinline autoplay loop muted src="https://player.vimeo.com/progressive_redirect/playback/256102133/rendition/720p/file.mp4?loc=external&amp;signature=0bb840ff3ae2acbf7b2ee32ed302caec40a16b41bf9ad26b4a3f33890828054a">
+                    <video className='opacity-100 pointer-event-auto visible z-10 object-cover col-start-1 col-end-auto row-start-1 row-end-auto relative w-full h-full aspect-[1280/720] overflow-hidden grid-cols-1 grid-rows-1 transition-opacity transition-visibility duration-300 delay-0 ease ease-linear' data-lazyload="https://player.vimeo.com/progressive_redirect/playback/256102133/rendition/720p/file.mp4?loc=external&amp;signature=0bb840ff3ae2acbf7b2ee32ed302caec40a16b41bf9ad26b4a3f33890828054a" autoPlay
+                        loop
+                        muted
+                        playsInline src="https://player.vimeo.com/progressive_redirect/playback/256102133/rendition/720p/file.mp4?loc=external&amp;signature=0bb840ff3ae2acbf7b2ee32ed302caec40a16b41bf9ad26b4a3f33890828054a">
                     </video>
                 </div>
                 {/* video details */}
