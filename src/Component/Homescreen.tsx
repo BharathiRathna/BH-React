@@ -21,19 +21,24 @@ const RecipeForm: React.FC = () => {
   const [showSearch, setShowSearch] = useState(false);
   const [showMap, setShowMap] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
 
-  // Detect screen size
+  const getOpacityClass = (menuName: string) => {
+    return !isMobile && hoveredMenu && hoveredMenu !== menuName
+      ? "opacity-30 transition-opacity duration-300"
+      : "opacity-100 transition-opacity duration-300";
+  };
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    //Initial check
+
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Scroll behavior
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 10);
@@ -42,7 +47,6 @@ const RecipeForm: React.FC = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // API fetch (sample only)
   useEffect(() => {
     fetch("http://localhost:1337/api/custom-boreshead-receipes?populate=*", {
       headers: {
@@ -80,9 +84,29 @@ const RecipeForm: React.FC = () => {
             <i className="fas fa-bars text-xl text-[#bbae96]"></i>
           </button>
 
-          <ProductDropdown />
-          <OurBrandDropdown />
-          <RecipesDropdown />
+          <div
+            onMouseEnter={() => setHoveredMenu("products")}
+            onMouseLeave={() => setHoveredMenu(null)}
+            className={getOpacityClass("products")}
+          >
+            <ProductDropdown />
+          </div>
+
+          <div
+            onMouseEnter={() => setHoveredMenu("ourBrand")}
+            onMouseLeave={() => setHoveredMenu(null)}
+            className={getOpacityClass("ourBrand")}
+          >
+            <OurBrandDropdown />
+          </div>
+
+          <div
+            onMouseEnter={() => setHoveredMenu("recipes")}
+            onMouseLeave={() => setHoveredMenu(null)}
+            className={getOpacityClass("recipes")}
+          >
+            <RecipesDropdown />
+          </div>
 
           <a href="/" aria-label="Home">
             <img
@@ -96,16 +120,32 @@ const RecipeForm: React.FC = () => {
             />
           </a>
 
-          <NutritionDropdown />
+          <div
+            onMouseEnter={() => setHoveredMenu("nutrition")}
+            onMouseLeave={() => setHoveredMenu(null)}
+            className={getOpacityClass("nutrition")}
+          >
+            <NutritionDropdown />
+          </div>
+
           <a
             href="/food-safety"
-            className="hover:underline uppercase font-['EB_Garamond'] text-sm tracking-wide"
+            className={`${getOpacityClass(
+              "foodSafety"
+            )} hover:underline uppercase font-['EB_Garamond'] text-sm tracking-wide`}
+            onMouseEnter={() => setHoveredMenu("foodSafety")}
+            onMouseLeave={() => setHoveredMenu(null)}
           >
             <p className="font-montserrat">Food Safety</p>
           </a>
+
           <a
             href="/careers"
-            className="hover:underline uppercase font-['EB_Garamond'] text-sm tracking-wide"
+            className={`${getOpacityClass(
+              "careers"
+            )} hover:underline uppercase font-['EB_Garamond'] text-sm tracking-wide`}
+            onMouseEnter={() => setHoveredMenu("careers")}
+            onMouseLeave={() => setHoveredMenu(null)}
           >
             <p className="font-montserrat">Careers</p>
           </a>
@@ -120,7 +160,6 @@ const RecipeForm: React.FC = () => {
                 <i className="fas fa-map-marker-alt text-lm mt-2"></i>
               </button>
             </div>
-
             <div>
               <button
                 onClick={() => setShowSearch(true)}
