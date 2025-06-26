@@ -18,7 +18,6 @@ const NutritionWellness = () => {
         </div>
       </div>
 
-      
       <img
         src="/images/nutrition-video.jpg"
         alt="Foodservice Guide"

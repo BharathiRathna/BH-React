@@ -4,14 +4,12 @@ const SearchFilter = () => {
   // State for the image slider
   const [currentSlide, setCurrentSlide] = useState(0);
   
-  // Your 5 slides data
   const slides = [
     {
        image: "/images/explore-recipes/hqdefault (2).jpg",
        title: "Pastrami Top Round Egg Rolls"
     },
     {
-      // image: "/images/explore-recipes/hqdefault (1).jpg",
       image: "/images/explore-recipes/hqdefault (3).jpg",
       title: "Breakfast Sausage Patty Scramble with Johnny Cake"
     },
@@ -46,7 +44,7 @@ const SearchFilter = () => {
 
   return (
     <div className='px-6 pt-[86px] relative overflow-visible  xl:px-20 xl:pt-[86px] bg-[#000]'>
-      {/* Your existing header and search form */}
+      {/*existing header and search form */}
       <section className='pt-[86px] overflow-visible relative'>
         <div className='pb-10 xl:pb-12 items-center flex flex-col justify-center overflow-hidden relative text-center'>
           <div className='sm:px-6 sm:w-full sm:z-[2] xl:w-5/6 mx-auto flex flex-col justify-center items-center'>
@@ -127,11 +125,48 @@ const SearchFilter = () => {
               </h3>
             </div>
           </div>
-          <div className='justify-center flex'>
-            <button className='row-start-1 row-end-auto bg-[#a6192e] p-4 relative items-center text-white gap-x-2.5 flex overflow-hidden font-[myriad-pro-semiextended,sans-serif] text-xs not-italic tracking-[.12em] uppercase leading-[1]'>
-              Search Recipes  →
+          <div className="justify-center flex">
+            <button 
+                onClick={() => console.log("Search Recipes Clicked")}
+                className="inline-block cursor-pointer text-decoration-none group relative overflow-hidden">
+                <span className="relative p-3 lg:p-4 items-center bg-[#a6192e] text-[#f7eedf] gap-x-2.5 flex z-10">
+                
+                {/* Gold texture background that slides in on hover */}
+                <span
+                    className="absolute inset-0 bg-[length:100%_100%] bg-no-repeat z-0 transition-all duration-500 ease-out transform -translate-x-full group-hover:translate-x-0 bg-[url('/images/nutrition-wellness/heading-gold-texture.jpg')]"
+                ></span>
+
+                {/* Arrow icon that appears on hover */}
+                <span className="opacity-0 group-hover:opacity-100 absolute left-3 transition-all duration-200 ease-out h-2.5 w-3 z-10">
+                    <span className="block h-2.5 w-3 bg-center bg-contain max-w-full align-sub text-[18.889px] text-[#f7eedf]">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" strokeWidth="2.5"
+                        stroke="currentColor" className="w-full h-full pointer-events-none overflow-visible block align-middle ">
+                        <path strokeLinecap="round" strokeLinejoin="round"
+                        d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                    </svg>
+                    </span>
+                </span>
+
+                {/* Text */}
+                <span className="text-xs pr-1 font-extrabold font-[myriad-pro-semiextended,sans-serif] tracking-[.12em] leading-[1]
+                uppercase transition-all duration-200 ease-out relative group-hover:translate-x-3 z-10">
+                    Search Recipes
+                </span>
+
+                {/* Arrow icon that disappears on hover */}
+                <span className="opacity-100 group-hover:opacity-0 translate-gpu transition-all ease-out duration-200 h-2.5 w-3 z-10">
+                    <span className="block h-2.5 w-3 bg-center bg-contain max-w-full align-sub text-[18.889px] text-[#f7eedf]">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" strokeWidth="2.5"
+                        stroke="currentColor" className="w-full h-full pointer-events-none overflow-visible block align-middle ">
+                        <path strokeLinecap="round" strokeLinejoin="round"
+                        d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                    </svg>
+                    </span>
+                </span>
+                </span>
             </button>
-          </div>
+            </div>
+
         </div>
         
         {/* Image Slider */}
@@ -168,7 +203,7 @@ const SearchFilter = () => {
                                 after:bg-[radial-gradient(ellipse_at_center,_#000_0,_transparent_33.3333333333%)]
                                 after:opacity-[0.4] after:box-border">     
                     </div>
-
+                    {/* this will use future */}
                      {/* <div className="invisible opacity-0 transition-opacity duration-300 ease-in-out bg-black" >
                                         <div className='pb-[303.75px] w-full'></div>
                                         <div className='opacity-0 transition-none z-[100] absolute top-1/2 left-0 w-full h-full overflow-hidden -translate-y-1/2'></div>
@@ -240,7 +275,6 @@ const SearchFilter = () => {
                                     </a>
                                 </div>
                                 <div class="pt-4 pb-10 lg:p-4">
-                                    {/* <span class="text-[#f7eedf] hover:text-[#a3987b] text-lg font-normal font-['Myriad_Pro_Display',_serif]">Herb-Marinated Mozzarella</span> */}
                                     <span class="block max-w-11/12 lg:text-xl font-[minion-pro-display,serif] not-italic leading-[1.35] font-normal lining-nums proportional-nums tracking-[.o25em] text-[#f7eedf] hover:text-[#a3987b]">Herb-Marinated Mozzarella</span>
                                 </div>
                     </div>

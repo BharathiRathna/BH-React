@@ -37,11 +37,11 @@ export default function FoodService() {
                         </span>
                     </h2>
                     <div className='justify-center flex'>
-                         <a onClick={() => setShowModal(true)} className="inline-block cursor-pointer text-decoration-none group relative overflow-hidden">
+                         <a onClick={() => setShowModal(true)} className="inline-block cursor-pointer text-decoration-none group relative overflow-hidden ">
                             <span className="relative p-3 lg:p-4 items-center bg-[#a6192e] text-[#f7eedf] gap-x-2.5 flex z-10">
                                 {/* Gold texture background that slides in on hover */}
                                 <span
-                                    className="absolute inset-0 bg-[length:100%_100%] bg-no-repeat z-0 transition-all duration-500 ease-out transform -translate-x-full group-hover:translate-x-0"
+                                    className="absolute inset-0 bg-[length:100%_100%] bg-no-repeat z-0 transition-all duration-500 ease-out transform -translate-x-full group-hover:translate-x-0 bg-[url('/images/nutrition-wellness/heading-gold-texture.jpg')]"
                                   
                                 ></span>
     
@@ -59,8 +59,7 @@ export default function FoodService() {
                                 {/* Text */}
                                 <span className="text-xs pr-1 font-extrabold font-[myriad-pro-semiextended,sans-serif] tracking-[.12em] leading-[1]
                                  uppercase transition-all duration-200 ease-out relative group-hover:translate-x-3 z-10">
-                                    CONTACT US
-                                    
+                                    CONTACT US       
                                 </span>
     
                                 {/* Arrow icon that disappears on hover */}
@@ -212,9 +211,7 @@ export default function FoodService() {
                                 </span>
                             </a>
                             <div></div>
-                    </div>
-    
-                   
+                    </div>    
                 </div>
     
                   <h3 className="text-xs lg:text-sm font-[minion-pro,'Times_New_Roman','Times','Georgia',serif] not-italic font-bold tracking-[.06em] leading-[1.28] uppercase mb-2 lg:mb-[11.25px] text-left text-[#ab965d]">
@@ -244,11 +241,9 @@ export default function FoodService() {
                 <div>
                    <a className="flex items-start inline-block cursor-pointer text-decoration-none group relative overflow-hidden">
                             {/* Outer container with white border by default */}
-                            <span className="relative p-3 lg:p-4 items-center border border-white text-[#f7eedf] gap-x-2.5 flex z-10 overflow-hidden transition-colors duration-500 group-hover:border-transparent">
-    
+                            <span className="relative p-3 lg:p-4 items-center border border-white text-[#f7eedf] gap-x-2.5 flex z-10 overflow-hidden transition-colors duration-500 group-hover:border-transparent"> 
                                 {/* Sliding red background & border effect */}
                                 <span className="absolute inset-0 z-0 transition-transform duration-500 ease-out transform -translate-x-full group-hover:translate-x-0 border border-red-800 bg-red-800"></span>
-    
                                 {/* Arrow icon that appears on hover */}
                                 <span className="opacity-0 group-hover:opacity-100 absolute left-3 transition-all duration-200 ease-out h-2.5 w-3 z-10">
                                 <span className="block h-2.5 w-3 bg-center bg-contain max-w-full align-sub text-[18.889px] text-[#f7eedf]">

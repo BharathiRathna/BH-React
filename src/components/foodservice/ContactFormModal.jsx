@@ -128,7 +128,6 @@ export default function ContactFormModal({ isOpen, onClose }) {
           </select>
 
           {/* Remaining fields not shown in screenshot */}
-          {/* SUBJECT (not in screenshot but keeping in case needed) */}
           <select
             required
             className="w-full text-sm font-semibold font-[myriad-pro-semiextended, sans-serif] px-4 py-2 border border-wight bg-transparent text-[#f7eedf] uppercase"
@@ -162,19 +161,15 @@ export default function ContactFormModal({ isOpen, onClose }) {
                         Yes, I'd like to receive updates from Boar's Head Foodservice. See our{" "}
                         <a href="#" className="underline text-[#c9a34c]">Privacy Policy</a>.
                       </p>
-
-
                 </div>
             
-
-
                 {/* Submit */}
                <div className='justify-center flex'>
                          <a onClick={() => setShowModal(true)} className="inline-block cursor-pointer text-decoration-none group relative overflow-hidden">
                             <span className="relative p-3 lg:p-4 items-center bg-[#a6192e] text-[#f7eedf] gap-x-2.5 flex z-10">
                                 {/* Gold texture background that slides in on hover */}
                                 <span
-                                    className="absolute inset-0 bg-[length:100%_100%] bg-no-repeat z-0 transition-all duration-500 ease-out transform -translate-x-full group-hover:translate-x-0"
+                                    className="absolute inset-0 bg-[length:100%_100%] bg-no-repeat z-0 transition-all duration-500 ease-out transform -translate-x-full group-hover:translate-x-0 bg-[url('/images/nutrition-wellness/heading-gold-texture.jpg')]"
                                   
                                 ></span>
     
@@ -192,8 +187,7 @@ export default function ContactFormModal({ isOpen, onClose }) {
                                 {/* Text */}
                                 <span className="text-xs pr-1 font-extrabold font-[myriad-pro-semiextended,sans-serif] tracking-[.12em] leading-[1]
                                  uppercase transition-all duration-200 ease-out relative group-hover:translate-x-3 z-10">
-                                  Submit
-                                    
+                                  Submit     
                                 </span>
     
                                 {/* Arrow icon that disappears on hover */}
@@ -209,7 +203,6 @@ export default function ContactFormModal({ isOpen, onClose }) {
                             </span>
                         </a>
                     </div>
-
           </div>
         </form>
       </div>

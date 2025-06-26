@@ -4,8 +4,6 @@ import DownloadNutritionGuide from "./DownloadNutritionGuide";
 import DeliPage from "./DeliPage";
 import React from 'react';
 
-
-
 export default function ManinNutritionWellness() {
  
   return (

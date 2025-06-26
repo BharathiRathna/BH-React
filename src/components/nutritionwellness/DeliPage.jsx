@@ -10,7 +10,7 @@ const DeliPage = () => {
         <img
           src="/images/nutrition-wellness/filigree-detail.png"
           alt="Filigree Detail"
-          className="w-7 h-auto" // adjust size as needed
+          className="w-7 h-auto"
         />
       </div>
 
