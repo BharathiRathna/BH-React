@@ -1,0 +1,325 @@
+import React, { useEffect, useState } from "react";
+import MainSection from "./Main";
+import ProductDropdown from "./ProductDropdown";
+import OurBrandDropdown from "./OurBrandDropdown";
+import RecipesDropdown from "./RecipesDropdown";
+import NutritionDropdown from "./Nutritiondropdown";
+import Footer from "./Footer";
+import SearchPage from "./SearchPage";
+import MapPage from "./Mappage";
+import MobileProductMenu from "./Mobileproduct";
+import MobileOurBrand from "./Mobileourbrand";
+import MobileRecipe from "./MobileRecipe";
+import MobileNutrition from "./MobileNutrition";
+
+const RecipeForm: React.FC = () => {
+  const [scrolled, setScrolled] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [mobileSubMenu, setMobileSubMenu] = useState<
+    null | "products" | "ourBrand" | "recipes" | "nutrition"
+  >(null);
+  const [showSearch, setShowSearch] = useState(false);
+  const [showMap, setShowMap] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
+
+  const getOpacityClass = (menuName: string) => {
+    return !isMobile && hoveredMenu && hoveredMenu !== menuName
+      ? "opacity-30 transition-opacity duration-300"
+      : "opacity-100 transition-opacity duration-300";
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:1337/api/custom-boreshead-receipes?populate=*", {
+      headers: {
+        Authorization: "API_TOKEN_HERE",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        const items = Array.isArray(data) ? data : data?.data || [];
+        console.log("Fetched items (not used):", items);
+      })
+      .catch((err) => {
+        console.error("Failed to fetch cards:", err);
+      });
+  }, []);
+
+  return (
+    <div className="font-serif bg-black text-[#f7eedf] min-h-screen">
+      {/* Header */}
+      <header className="fixed w-full bg-black z-50">
+        <div className="h-2 bg-gradient-to-r from-[#730010] via-[#b80d31] to-[#730010]"></div>
+        <div className="text-[#ab965d] text-[11px] mt-2 text-center pr-14 mx-auto mb-1 font-['Minion_Pro']">
+          <span className="font-['Minion_Pro'] font-semibold tracking-[0.188rem] text-[#ab965d] text-[11px] ml-17">
+            FAMILY OWNED SINCE&nbsp;1905
+          </span>
+        </div>
+
+        <nav className="flex items-center justify-center flex-wrap gap-11 w-full text-[17px] ml-15 font-semibold tracking-wider uppercase relative z-50">
+          <button
+            className="md:hidden block"
+            aria-label="More Options"
+            onClick={() => setShowMobileMenu(true)}
+          >
+            <i className="fas fa-bars text-xl text-[#bbae96]"></i>
+          </button>
+
+          <div
+            onMouseEnter={() => setHoveredMenu("products")}
+            onMouseLeave={() => setHoveredMenu(null)}
+            className={getOpacityClass("products")}
+          >
+            <ProductDropdown />
+          </div>
+
+          <div
+            onMouseEnter={() => setHoveredMenu("ourBrand")}
+            onMouseLeave={() => setHoveredMenu(null)}
+            className={getOpacityClass("ourBrand")}
+          >
+            <OurBrandDropdown />
+          </div>
+
+          <div
+            onMouseEnter={() => setHoveredMenu("recipes")}
+            onMouseLeave={() => setHoveredMenu(null)}
+            className={getOpacityClass("recipes")}
+          >
+            <RecipesDropdown />
+          </div>
+
+          <a href="/" aria-label="Home">
+            <img
+              src={
+                scrolled
+                  ? "/img/boars-head-medallion-gold.png"
+                  : "/img/boars-head-logo-full.png"
+              }
+              alt="Boar's Head Logo"
+              className="w-[260px] h-12 object-contain transition-opacity duration-300 ease-in-out"
+            />
+          </a>
+
+          <div
+            onMouseEnter={() => setHoveredMenu("nutrition")}
+            onMouseLeave={() => setHoveredMenu(null)}
+            className={getOpacityClass("nutrition")}
+          >
+            <NutritionDropdown />
+          </div>
+
+          <a
+            href="/food-safety"
+            className={`${getOpacityClass(
+              "foodSafety"
+            )} hover:underline uppercase  font-['Montserrat'] text-sm tracking-wide`}
+            onMouseEnter={() => setHoveredMenu("foodSafety")}
+            onMouseLeave={() => setHoveredMenu(null)}
+          >
+            <p className="font-montserrat">Food Safety</p>
+          </a>
+
+          <a
+            href="/careers"
+            className={`${getOpacityClass(
+              "careers"
+            )} hover:underline uppercase  font-['Montserrat'] text-sm tracking-wide`}
+            onMouseEnter={() => setHoveredMenu("careers")}
+            onMouseLeave={() => setHoveredMenu(null)}
+          >
+            <p className="font-montserrat">Careers</p>
+          </a>
+
+          <div className="flex items-center space-x-5">
+            <div>
+              <button
+                onClick={() => setShowMap(true)}
+                aria-label="Find Locations"
+                className="text-[#bbae96]"
+              >
+                <i className="fas fa-map-marker-alt text-lm mt-2"></i>
+              </button>
+            </div>
+            <div>
+              <button
+                onClick={() => setShowSearch(true)}
+                aria-label="Search"
+                className="text-[#bbae96]"
+              >
+                <i className="fas fa-search text-lm mt-2"></i>
+              </button>
+            </div>
+          </div>
+        </nav>
+
+        {/* Conditional rendering of Search & Map */}
+        {showSearch &&
+          (isMobile ? (
+            <div className="fixed inset-0 z-50 bg-black overflow-auto">
+              <SearchPage onClose={() => setShowSearch(false)} />
+            </div>
+          ) : (
+            <SearchPage onClose={() => setShowSearch(false)} />
+          ))}
+        {showMap && <MapPage onClose={() => setShowMap(false)} />}
+      </header>
+
+      {/* Mobile Menu */}
+      {showMobileMenu && (
+        <div className="fixed inset-0 bg-black text-[#f7eedf] z-50 flex flex-col p-6 overflow-y-auto font-montserrat">
+          {mobileSubMenu === "products" ? (
+            <MobileProductMenu onBack={() => setMobileSubMenu(null)} />
+          ) : mobileSubMenu === "ourBrand" ? (
+            <MobileOurBrand onBack={() => setMobileSubMenu(null)} />
+          ) : mobileSubMenu === "recipes" ? (
+            <MobileRecipe onBack={() => setMobileSubMenu(null)} />
+          ) : mobileSubMenu === "nutrition" ? (
+            <MobileNutrition onBack={() => setMobileSubMenu(null)} />
+          ) : (
+            <>
+              {/* Mobile Header */}
+              <div className="flex items-center justify-between mb-6">
+                <button
+                  onClick={() => setShowMobileMenu(false)}
+                  aria-label="Close Menu"
+                  className="text-2xl font-normal text-[#f7eedf] rounded-full w-8 h-8 flex items-center justify-center"
+                >
+                  &times;
+                </button>
+                <div className="absolute left-1/2 transform -translate-x-1/2 flex flex-col items-center">
+                  <span className="text-[#ab965d] text-[6px] tracking-[0.25em] uppercase leading-tight mb-1">
+                    FAMILY OWNED SINCE 1905
+                  </span>
+                  <img
+                    src="/img/boars-head-logo-full.png"
+                    alt="Boar's Head"
+                    className="w-[150px] object-contain"
+                  />
+                </div>
+                <div className="flex items-center space-x-4 text-sm">
+                  <button
+                    onClick={() => setShowMap(true)}
+                    aria-label="Find Locations"
+                  >
+                    <i className="fas fa-map-marker-alt" />
+                  </button>
+                  <button
+                    onClick={() => setShowSearch(true)}
+                    aria-label="Search"
+                  >
+                    <i className="fas fa-search" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Menu List */}
+              <ul className="space-y-8 text-lm font-semibold mb-10">
+                <li className="flex justify-between items-center pb-1 border-b border-transparent">
+                  <button
+                    onClick={() => setMobileSubMenu("products")}
+                    className="uppercase hover:underline"
+                  >
+                    Products
+                  </button>
+                  <i className="fas fa-chevron-right text-xs" />
+                </li>
+                <li className="flex justify-between items-center pb-1 border-b border-transparent">
+                  <button
+                    onClick={() => setMobileSubMenu("ourBrand")}
+                    className="uppercase hover:underline"
+                  >
+                    Our Brand
+                  </button>
+                  <i className="fas fa-chevron-right text-xs" />
+                </li>
+                <li className="flex justify-between items-center pb-1 border-b border-transparent">
+                  <button
+                    onClick={() => setMobileSubMenu("recipes")}
+                    className="uppercase hover:underline"
+                  >
+                    Recipes
+                  </button>
+                  <i className="fas fa-chevron-right text-xs" />
+                </li>
+                <li className="flex justify-between items-center pb-1 border-b border-transparent">
+                  <button
+                    onClick={() => setMobileSubMenu("nutrition")}
+                    className="uppercase hover:underline"
+                  >
+                    Nutrition
+                  </button>
+                  <i className="fas fa-chevron-right text-xs" />
+                </li>
+                <li>
+                  <a href="/food-safety" className="uppercase hover:underline">
+                    Food Safety
+                  </a>
+                </li>
+                <li>
+                  <a href="/careers" className="uppercase hover:underline">
+                    Careers
+                  </a>
+                </li>
+              </ul>
+
+              {/* Footer */}
+              <div className="mt-auto pt-6">
+                <div
+                  className="text-[#ab965d] text-[15px] uppercase font-semibold tracking-[0.25em] mb-2"
+                  style={{ fontFamily: '"Optima", "serif"' }}
+                >
+                  Contact Us
+                </div>
+                <p
+                  className="text-[17px] leading-[1.5] text-[#f7eedf] mb-2"
+                  style={{ fontFamily: '"Georgia", "Times New Roman", serif' }}
+                >
+                  Please reach out Monday through <br /> Friday, from 8 a.m. to
+                  5 p.m. ET.
+                </p>
+                <p className="text-sm font-bold text-[#ab965d] mb-7 mt-4">
+                  (800) 352-6277
+                </p>
+                <div className="flex items-center space-x-4 text-[#ab965d] text-[25px] mb-3">
+                  <i className="fab fa-facebook-f" />
+                  <i className="fab fa-instagram" />
+                  <i className="fab fa-youtube" />
+                  <i className="fab fa-pinterest-p" />
+                  <i className="fab fa-x-twitter" />
+                  <i className="fab fa-tiktok" />
+                </div>
+              </div>
+            </>
+          )}
+        </div>
+      )}
+
+      {/* Main Section and Footer */}
+      <div className="pt-[120px]">
+        <MainSection />
+      </div>
+      <Footer />
+    </div>
+  );
+};
+
+export default RecipeForm;
