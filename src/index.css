@@ -1,6 +1,6 @@
 @import "tailwindcss";
 :root {
-   --bg-brick-desktop: url("../public/img/bg-brick-desktop.png");
-  --map-all-product: url("../public/img/map-all-product.jpg");
+   --bg-brick-desktop: url("../img/bg-brick-desktop.png");
+  --map-all-product: url("../img/map-all-product.jpg");
   --map-all-gvgh: url("../public/img/frame-border.png");
 }

@@ -48,11 +48,7 @@ const ProductDropdown: React.FC = () => {
   };
 
   return (
-    <div
-      className="relative"
-      ref={dropdownRef}
-      style={{ fontFamily: '"Times New Roman", serif' }}
-    >
+    <div className="relative font-['Times_New_Roman',serif]" ref={dropdownRef}>
       <button
         type="button"
         onMouseEnter={() => setProductOpen(true)}
@@ -63,10 +59,9 @@ const ProductDropdown: React.FC = () => {
 
       {productOpen && (
         <div
-          className="fixed top-[80px] sm:top-[100px] lg:top-[120px] left-0 w-full bg-black border-t border-b border-[#bbae96] text-[#f7eedf] shadow-lg z-50"
+          className="fixed top-[100px] sm:top-[100px] lg:top-[85px] left-0 w-full bg-black border-t border-b border-[#bbae96] text-[#f7eedf] shadow-lg z-50 font-['Times_New_Roman',serif]"
           onMouseEnter={() => setProductOpen(true)}
           onMouseLeave={() => setProductOpen(false)}
-          style={{ fontFamily: '"Times New Roman", serif' }}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
             {/* Mobile */}
@@ -257,9 +252,9 @@ const ProductDropdown: React.FC = () => {
 
                 <div>
                   <>
-                  <h3 className="uppercase text-[#ab965d] text-lm mb-4 font-semibold tracking-wider">
-                    Specialty Collections
-                  </h3>
+                    <h3 className="uppercase text-[#ab965d] text-lm mb-4 font-semibold tracking-wider">
+                      Specialty Collections
+                    </h3>
                   </>
                   <ul className="space-y-2 text-lm leading-snug">
                     {specialtyCollections.map((item, index) => (

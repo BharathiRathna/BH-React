@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useRef, useState } from "react";
 
 const brandLinks = [
@@ -39,22 +37,18 @@ const OurBrandDropdown: React.FC = () => {
   }, []);
 
   return (
-    <div
-      className="relative"
-      ref={dropdownRef}
-      style={{ fontFamily: "Times New Roman, serif" }}
-    >
+    <div className="relative font-['Times_New_Roman',serif]" ref={dropdownRef}>
       <button
         type="button"
         onMouseEnter={() => setIsOpen(true)}
-        className="hover:underline uppercase font-['EB_Garamond'] text-sm tracking-wide bg-transparent border-0 p-0 cursor-pointer"
+        className="hover:underline uppercase  font-['Montserrat'] text-sm tracking-wide bg-transparent border-0 p-0 cursor-pointer"
       >
         <p className="font-montserrat">Our Brand</p>
       </button>
 
       {isOpen && (
         <div
-          className="fixed top-[80px] sm:top-[100px] lg:top-[120px] left-0 right-0 bg-black border-t border-b border-[#bbae96] text-[#f7eedf] shadow-lg z-50"
+          className="fixed top-[80px] sm:top-[100px] lg:top-[80px] bottom-[110px] left-0 right-0 bg-black border-t border-b border-[#bbae96] text-[#f7eedf] shadow-lg z-50"
           onMouseEnter={() => setIsOpen(true)}
           onMouseLeave={() => setIsOpen(false)}
         >
@@ -62,10 +56,7 @@ const OurBrandDropdown: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-8">
               {/* Our Brand */}
               <div>
-                <h3
-                  className="uppercase text-[#ab965d] text-sm mb-4 font-semibold"
-                  style={{ fontFamily: "'EB Garamond', serif" }}
-                >
+                <h3 className="uppercase text-[#ab965d] text-sm mb-4 font-semibold font-['EB_Garamond',serif]">
                   Our Brand
                 </h3>
 

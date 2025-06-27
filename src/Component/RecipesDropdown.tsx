@@ -1,6 +1,3 @@
-
-
-
 import React, { useEffect, useRef, useState } from "react";
 
 const RecipesDropdown: React.FC = () => {
@@ -24,22 +21,18 @@ const RecipesDropdown: React.FC = () => {
   }, []);
 
   return (
-    <div
-      className="relative"
-      ref={dropdownRef}
-      style={{ fontFamily: "Times New Roman, serif" }}
-    >
+    <div className="relative font-[]Times_New_Roman',serif]" ref={dropdownRef}>
       <button
         type="button"
         onMouseEnter={() => setRecipesOpen(true)}
-        className="hover:underline uppercase font-['EB_Garamond'] text-sm tracking-wide bg-transparent border-0 p-0 cursor-pointer"
+        className="hover:underline uppercase  font-['Montserrat'] text-sm tracking-wide bg-transparent border-0 p-0 cursor-pointer"
       >
         <p className="font-montserrat">Recipes</p>
       </button>
 
       {recipesOpen && (
         <div
-          className="fixed top-[100px] left-0 w-full bg-black text-[#f7eedf] border-y border-[#bbae96] shadow-xl z-50"
+          className="fixed top-[85px] left-0 w-full bottom-[80px] bg-black text-[#f7eedf] border-y border-[#bbae96] shadow-xl z-50"
           onMouseEnter={() => setRecipesOpen(true)}
           onMouseLeave={() => setRecipesOpen(false)}
         >
@@ -108,7 +101,7 @@ const RecipesDropdown: React.FC = () => {
             </div>
 
             {/* Right Cards */}
-            <div className="lg:col-span-2 grid grid-cols-2 gap-6">
+            <div className="lg:col-span-2 grid grid-cols-2 gap-6 mb-3">
               {[
                 {
                   src: "/img/receipes/card-149.jpg",

@@ -69,13 +69,12 @@ const RecipeForm: React.FC = () => {
       <header className="fixed w-full bg-black z-50">
         <div className="h-2 bg-gradient-to-r from-[#730010] via-[#b80d31] to-[#730010]"></div>
         <div className="text-[#ab965d] text-[11px] mt-2 text-center pr-14 mx-auto mb-1 font-['Minion_Pro']">
-          <span className="font-bold tracking-[0.188rem]">
-            FAMILY OWNED SINCE
+          <span className="font-['Minion_Pro'] font-semibold tracking-[0.188rem] text-[#ab965d] text-[11px] ml-17">
+            FAMILY OWNED SINCE&nbsp;1905
           </span>
-          <span className="font-medium tracking-[0.188rem] pl-1">1905</span>
         </div>
 
-        <nav className="flex items-center justify-center flex-wrap gap-9 w-full text-[17px] font-semibold tracking-wider uppercase relative z-50">
+        <nav className="flex items-center justify-center flex-wrap gap-11 w-full text-[17px] ml-15 font-semibold tracking-wider uppercase relative z-50">
           <button
             className="md:hidden block"
             aria-label="More Options"
@@ -132,7 +131,7 @@ const RecipeForm: React.FC = () => {
             href="/food-safety"
             className={`${getOpacityClass(
               "foodSafety"
-            )} hover:underline uppercase font-['EB_Garamond'] text-sm tracking-wide`}
+            )} hover:underline uppercase  font-['Montserrat'] text-sm tracking-wide`}
             onMouseEnter={() => setHoveredMenu("foodSafety")}
             onMouseLeave={() => setHoveredMenu(null)}
           >
@@ -143,7 +142,7 @@ const RecipeForm: React.FC = () => {
             href="/careers"
             className={`${getOpacityClass(
               "careers"
-            )} hover:underline uppercase font-['EB_Garamond'] text-sm tracking-wide`}
+            )} hover:underline uppercase  font-['Montserrat'] text-sm tracking-wide`}
             onMouseEnter={() => setHoveredMenu("careers")}
             onMouseLeave={() => setHoveredMenu(null)}
           >

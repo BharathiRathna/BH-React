@@ -1,5 +1,4 @@
-
-
+import { motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 
 const nutritionCategories = [
@@ -37,22 +36,18 @@ const NutritionDropdown: React.FC = () => {
   };
 
   return (
-    <div
-      className="relative"
-      ref={dropdownRef}
-      style={{ fontFamily: '"Times New Roman", serif' }} // <- Applying Times New Roman
-    >
+    <div className="relative font-[Times_New_Roman,serif]" ref={dropdownRef}>
       <button
         type="button"
         onMouseEnter={() => setNutritionOpen(true)}
-        className="hover:underline uppercase text-sm tracking-wide bg-transparent border-0 p-0 cursor-pointer"
+        className="hover:underline uppercase text-sm tracking-wide bg-transparent border-0 p-0 cursor-pointer  font-['Montserrat']"
       >
         <p className="font-montserrat">Nutrition</p>
       </button>
 
       {nutritionOpen && (
         <div
-          className="fixed top-[120px] left-0 w-full bg-black border-t border-b border-[#bbae96] text-[#f7eedf] shadow-lg z-50"
+          className="fixed top-[85px] left-0 w-full bg-black border-t border-b border-[#bbae96] text-[#f7eedf] shadow-lg z-50"
           onMouseEnter={() => setNutritionOpen(true)}
           onMouseLeave={() => setNutritionOpen(false)}
         >
@@ -97,12 +92,14 @@ const NutritionDropdown: React.FC = () => {
 
           {/* Bottom Link aligned left */}
           <div className="max-w-7xl mx-auto px-6 pb-6">
-            <a
+            <motion.a
               href="/nutrition"
-              className="text-xs uppercase font-bold tracking-wider hover:underline inline-flex items-center gap-1"
+              className="text-xs uppercase font-bold tracking-wider inline-flex items-center gap-1"
+              whileHover={{ x: 4 }} 
+              transition={{ type: "spring", stiffness: 600, damping: 20 }}
             >
               Nutrition →
-            </a>
+            </motion.a>
           </div>
         </div>
       )}
