@@ -18,11 +18,21 @@ const NutritionWellness = () => {
         </div>
       </div>
 
-      <img
-        src="/images/nutrition-video.jpg"
-        alt="Foodservice Guide"
-        className="lg:mb-6 lg:w-full lg:px-20 px-2 opacity-65 aspect-[326/398] lg:aspect-[1420/710] object-cover"
-      />
+       <section className="lg:mb-6 lg:w-full lg:px-20 px-2 opacity-65 aspect-[326/398] lg:aspect-[1420/710] object-cover">
+            <div className="grid grid-cols-1 grid-rows-1">
+                {/* image and bg-video section */}
+                <div className="grid grid-cols-1 grid-rows-1 col-start-1 col-end-auto row-start-1 row-end-auto relative overflow-hidden aspect-[326/398] lg:aspect-[1280/720]">
+                    <picture className="col-start-1 col-end-auto row-start-1 row-end-auto object-cover relative w-full h-full z-0">
+                        <img src="/images/nutrition-video.jpg" alt="" className='w-full h-full block object-cover opacity-70'/>
+                    </picture>
+                    <video className='opacity-100 pointer-event-auto visible z-10 object-cover col-start-1 col-end-auto row-start-1 row-end-auto relative w-full h-full aspect-[1280/720] overflow-hidden grid-cols-1 grid-rows-1 transition-opacity transition-visibility duration-300 delay-0 ease ease-linear' data-lazyload="https://player.vimeo.com/progressive_redirect/playback/256102133/rendition/720p/file.mp4?loc=external&amp;signature=0bb840ff3ae2acbf7b2ee32ed302caec40a16b41bf9ad26b4a3f33890828054a" autoPlay
+                        loop
+                        muted
+                        playsInline src="https://player.vimeo.com/progressive_redirect/playback/965091266/rendition/720p/file.mp4?loc=external&signature=b6fc862f2a95030ba209dab74fd38ca60cd9b806b9902948f4cb6b93bb1cf045">
+                    </video>
+                </div>   
+            </div>
+        </section>
 
       {/* Quality Promise Section */}
       <div className="max-w-2xl flex flex-col items-center mt-16 lg:mt-24">
